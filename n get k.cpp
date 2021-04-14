@@ -19,7 +19,7 @@ void make(int now, int a, int n, int k){
 }
 int main(){
 	int n;
- int k;
+ 	int k;
 	scanf("%d %d", &n, &k);
 	make(0, 0, n, k);
 }
