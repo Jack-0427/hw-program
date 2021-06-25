@@ -94,8 +94,8 @@ int main(){
 //		printf("%d %s %s %s\n", contact[i].relation, contact[i].first, contact[i].last, contact[i].phone);
 //	}
 	END = clock();
-	cout << endl << "µ{¦¡°õ¦æ©Òªá¶O¡G" << (double)clock()/CLOCKS_PER_SEC << " S";
-	cout << endl << "¶i¦æ¹Bºâ©Òªá¶Oªº®É¶¡¡G" << (END - START) / CLOCKS_PER_SEC << " S" << endl;
+	cout << endl << "ç¨‹å¼åŸ·è¡Œæ‰€èŠ±è²»ï¼š" << (double)clock()/CLOCKS_PER_SEC << " S";
+	cout << endl << "é€²è¡Œé‹ç®—æ‰€èŠ±è²»çš„æ™‚é–“ï¼š" << (END - START) / CLOCKS_PER_SEC << " S" << endl;
 	fclose(infile);
 }
 
