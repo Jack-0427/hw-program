@@ -7,7 +7,6 @@ int last[10] = {0};
 int board[9][9];
 int state[9][9];
 int j;
-int trace = 0;
 
 void print(int p[][9]){
 	for(int i = 0; i < 9; i++){
@@ -74,43 +73,44 @@ int get(int p[][9], int i, int j){
 }
 
 void recur(int p[][9], int i){
-	if(i == 9 && trace == 0){
-		print(p);
-		printf("\n");
-		trace = 1;
-	}
-	
-	else if(back[i] == 0){
-		j = first[i];
-	}
-	else if(back[i] == 1){
-		j = last[i];
-	}
-	for(int j1 = j; j1 <= last[i]; j1++){
-		back[i] = 0;
-		if(state[i][j1] == 0){
-			if(get(p, i, j1) == -1){
-				p[i][j1] = 0;
-				if(j1 == 0){
-					back[i-1] = 1;
-					recur(p, i-1);
-				}
-				j1--;
-				while(state[i][j1] > 0){
-					if(j1 == 0){
-						back[i-1] = 1;
-						recur(p, i-1);
-					}
-					j1--;
-				}
-				j1--;
-			}
-			else{
-				p[i][j1] = get(p, i, j1);
-			}
+	START:
+		if(i == 9){
+			print(p);
 		}
-	}
-	recur(p, i+1);
+		else{
+			if(back[i] == 0){
+				j = first[i];
+			}
+			else if(back[i] == 1){
+				j = last[i];
+			}
+			for(int j1 = j; j1 <= last[i]; j1++){
+				back[i] = 0;
+				if(state[i][j1] == 0){
+					if(get(p, i, j1) == -1){
+						p[i][j1] = 0;
+						if(j1 == 0){
+							back[i-1] = 1;
+							return;
+						}
+						j1--;
+						while(state[i][j1] > 0){
+							if(j1 == 0){
+								back[i-1] = 1;
+								return;
+							}
+							j1--;
+						}
+						j1--;
+					}
+					else{
+						p[i][j1] = get(p, i, j1);
+					}
+				}
+			}
+			recur(p, i+1);
+			goto START;
+		}
 }
 	
 int main(){
