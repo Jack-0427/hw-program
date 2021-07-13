@@ -24,13 +24,11 @@ int* heapsort(int* A, int n){
 					else if((j+1)*2 < n){
 						min = (A[j*2+1] < A[(j+1)*2]) ? j*2+1 : (j+1)*2;
 					}
-					if(A[j] > A[min]){
-						swap(A+j, A+min);
-						j = min;	
+					if(A[j] <= A[min]){
+						break;	
 					}
-					else{
-						break;
-					}
+					swap(A+j, A+min);
+					j = min;
 				}
 			}
 			i--;
